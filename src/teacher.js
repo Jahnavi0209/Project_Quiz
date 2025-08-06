@@ -13,7 +13,7 @@ const Teacher =() => {
     }
     console.log(data);
     const deleteQuestion =(id)=>{
-        fetch(`http://localhost:8080/questions/delete/${id}`, { method: 'Delete' })
+        fetch(`http://localhost:8080/questions/delete/${id}`, { method: 'DELETE' })
         .then(response=>{
             alert(`deleted ${id}`);
             fetchQuestion();
