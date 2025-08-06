@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect, useState } from 'react';
+import Student from './student';
+import Teacher from './teacher';
 function App() {
+  const [usertype,setusertype] = useState('')
+  
+
+  const studentClick = ()=>{
+    setusertype('student');
+    //debugger;
+    // fetchQuestion();
+  
+  }
+
+
+  //const teacherClick = ()=> { setusertype('teacher')}
+  // useEffect(() => { console.log("string")})
+  // useEffect(() => { console.log("string")}, [])
+  // useEffect(() => { console.log("string")}, [usertype])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={studentClick}>student</button>
+      <button onClick={()=>setusertype('teacher')}>Teacher</button>
+        {
+          usertype==="student" && 
+          ( 
+            <Student />  
+          ) 
+        }
+        {
+          usertype==="teacher" &&
+          (
+            <Teacher/>
+          )
+        }
     </div>
   );
 }
