@@ -91,8 +91,8 @@ const Student =() => {
                 </label>
                 </div> ))}
 
-                {data.length>0 && (<button type="button" onClick={sendResult}>result</button>)}<br/>
-                {score && (<div>The result is:{score}</div>)}
+                {data.length>0 && (<button type="button" onClick={sendResult}>Submit</button>)}<br/>
+                {score>=0 && (<div>Your Score is:{score}</div>)}
                 
                 </div>
                 
