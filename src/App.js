@@ -1,40 +1,46 @@
 import { useEffect, useState } from 'react';
 import Student from './student';
 import Teacher from './teacher';
+import React from 'react';
+import AddQuestion from './addquestion';
+import GetQuestion from './fetchques';
+import UpdateQues from './update';
+import {
+   BrowserRouter as Router,
+   Routes,
+   Route,
+   Link,
+  } from 'react-router-dom';
+  
 function App() {
-  const [usertype,setusertype] = useState('')
+  // const [usertype,setusertype] = useState('')
   
+  const Dashboard =()=> (
 
-  const studentClick = ()=>{
-    setusertype('student');
-    //debugger;
-    // fetchQuestion();
+    <>
+    <Link to="/students">StudentQues</Link><br/>
+    <Link to="/teacher">Teacher</Link>
+    </>
+  )
   
-  }
-
-
-  //const teacherClick = ()=> { setusertype('teacher')}
-  // useEffect(() => { console.log("string")})
-  // useEffect(() => { console.log("string")}, [])
-  // useEffect(() => { console.log("string")}, [usertype])
-
+  
+ 
   return (
-    <div>
-      <button onClick={studentClick}>student</button>
-      <button onClick={()=>setusertype('teacher')}>Teacher</button>
-        {
-          usertype==="student" && 
-          ( 
-            <Student />  
-          ) 
-        }
-        {
-          usertype==="teacher" &&
-          (
-            <Teacher/>
-          )
-        }
-    </div>
+    <Router>
+      
+      <Routes>
+        <Route path="/" element={<Dashboard/>} />
+        <Route path="/students" element={<Student/>}/>
+        <Route path="/teacher" element={<Teacher />}/>
+        <Route path="/teacher/getallques" element={<GetQuestion/>}/>
+        <Route path="/teacher/addques" element={<AddQuestion/>} />
+        <Route path="teacher/update" element={<UpdateQues />} />
+      </Routes>
+
+      
+
+    </Router>
+    
   );
 }
 
